@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>zom die lands</title>
+        <link href="styles/style.css" rel="stylesheet" />
+        
+    </head>
+
+    <body>
+        <header >
+            <p>
+            <img src="images/ZOMDIELAND.png"width="170" height="130" class="hi" >
+            </p>
+        
+        </header>
+        <nav>
+                <p>
+                hello <img src="images/HAPPINES1.png"> 
+                hi <img src="images/HAPPINES2.png"> 
+                yesyes <img src="images/HAPPINES3.png">
+                uh huh <img src="images/HAPPINES4.png">    
+            </p>
+        </nav>
+       
+     
+    <script>
+    let currentPage = 1;
+    const totalPages = 4; // update when you add more pages
+
+    async function loadPage(id) {
+      if (id < 1 || id > totalPages) return;
+
+      const res = await fetch(`pages/page${id}.html`);
+      if (!res.ok) {
+        document.getElementById("content").innerHTML = "Page not found.";
+        return;
+      }
+      const html = await res.text();
+      document.getElementById("content").innerHTML = html;
+
+      currentPage = id;
+      history.replaceState(null, "", `?page=${currentPage}`);
+     setupToggles();
+}
+
+        function setupToggles() {
+        document.querySelectorAll("[data-toggle]").forEach(btn => {
+           
+            btn.addEventListener("click", () => {
+                 
+            const targetId = btn.getAttribute("data-toggle");
+            const box = document.getElementById(targetId);
+            if (box.hidden) {
+                box.hidden = false;
+                 box.style.display = "block"
+                btn.textContent = "Hide Info";
+            } else {
+                box.hidden = true;
+                box.style.display = "none"
+                btn.textContent = "Show Info";
+            }
+            // console.log(box.hidden)
+            });
+        });
+        document.querySelectorAll("[next]").forEach(btn => {
+           
+            btn.addEventListener("click", () => {
+                 
+            const targetId = btn.getAttribute("next");
+            if(targetId == 0){
+                loadPage(currentPage + 1)
+            }
+            else{
+                loadPage(targetId)
+            }
+            // console.log(box.hidden)
+            });
+        });
+        document.querySelectorAll("[prev]").forEach(btn => {
+           
+            btn.addEventListener("click", () => {
+                 
+            const targetId = btn.getAttribute("prev");
+            if(targetId == 0){
+                loadPage(currentPage - 1)
+            }
+            else{
+                loadPage(targetId)
+            }
+            // console.log(box.hidden)
+            });
+        });
+}
+    // if( document.getElementById("next") != null){
+    // document.getElementById("next").addEventListener("click", () => loadPage(currentPage + 1));}
+
+    // Load from URL (?page=2)
+    const params = new URLSearchParams(window.location.search);
+    const startPage = parseInt(params.get("page")) || 1;
+    loadPage(startPage);
+  </script>
+         <main class="coolstuff">
+         <div id="content">Loading...</div>
+        </main>
+</body>
+
+
+</html>
