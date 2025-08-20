@@ -24,13 +24,19 @@
             </p>
         </nav>
        
-     
+         <main class="page">
+         <div id="content">Loading...</div>
+         <div class="centered">
+         <button id="saveBtn" class="save">Save Game</button>
+        <button id="loadBtn" class="save">Load Game</button>
+        </div>
+        </main>
     <script>
     let currentPage = 1;
     const totalPages = 4; // update when you add more pages
 
     async function loadPage(id) {
-      if (id < 1 || id > totalPages) return;
+      if (id < 1) return;
 
       const res = await fetch(`pages/page${id}.html`);
       if (!res.ok) {
@@ -93,6 +99,20 @@
             });
         });
 }
+        document.getElementById("saveBtn").addEventListener("click", () => {
+        localStorage.setItem("savedPage", currentPage);
+
+        });
+
+        // Load button
+        document.getElementById("loadBtn").addEventListener("click", () => {
+        const saved = localStorage.getItem("savedPage");
+        if (saved) {
+            loadPage(parseInt(saved));
+        } else {
+            alert("No saved game found!");
+        }
+});
     // if( document.getElementById("next") != null){
     // document.getElementById("next").addEventListener("click", () => loadPage(currentPage + 1));}
 
@@ -100,10 +120,9 @@
     const params = new URLSearchParams(window.location.search);
     const startPage = parseInt(params.get("page")) || 1;
     loadPage(startPage);
+    
   </script>
-         <main class="page">
-         <div id="content">Loading...</div>
-        </main>
+     
 </body>
 
 

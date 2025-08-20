@@ -84,10 +84,25 @@ button {
     background-color: transparent;
     border: none;
     font-size: 20px;
+    margin-left: 15%;
     color: rgb(8, 8, 88);
     text-decoration-line: underline;
     text-emphasis-color: purple;
     
 
     
+}
+.save {
+    background-color: transparent;
+    border: none;
+    font-size: 10px;
+    color: rgb(56, 58, 71);
+    text-decoration-line: underline;
+    text-emphasis-color: purple;
+    
+
+    
+}
+.centered{
+    text-align: center;
 }
