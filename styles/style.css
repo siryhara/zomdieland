@@ -18,12 +18,21 @@ nav {
 } */
 .coolstuff {
    
-    text-align: left;
+    text-align: center;
     padding: 2%;
     margin: 2%;
     background-color: rgb(196, 196, 196);
     border: 2px solid rgb(80, 80, 80);
     min-height: 500;
+}
+.page {
+   
+    text-align: left;
+    padding: 2%;
+    margin: 2%;
+    background-color: rgb(196, 196, 196);
+    border: 2px solid rgb(80, 80, 80);
+    min-height: 500px;
 }
 .up {
     text-align:center;
@@ -54,6 +63,17 @@ button {
     border: none;
     font-size: 30px;
     margin-left: 25%;
+    color: blue;
+    text-decoration-line: underline;
+    text-emphasis-color: purple;
+
+    
+}
+.start {
+    background-color: transparent;
+    border: none;
+    font-size: 30px;
+    text-align: center;
     color: blue;
     text-decoration-line: underline;
     text-emphasis-color: purple;
