@@ -53,6 +53,19 @@ nav {
     background: #f0f0f0;
     text-align: left;
 }
+.dial {
+    display: block;
+    margin-top: 2px;
+    padding: 2px;
+    border: 2px dashed #333;
+
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+    text-wrap: wrap;
+    background: #f0f0f0;
+    text-align: left;
+}
 button {
     
     font-size: 12px;
@@ -113,4 +126,8 @@ button {
     background-color: rgb(234, 234, 234);
     border: 2px solid rgb(80, 80, 80);
     min-height: 500;
+}
+.image{
+    min-width: 650px;
+    min-height: 450px;
 }
